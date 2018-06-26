@@ -1,0 +1,56 @@
+void ErrorExit(LPTSTR lpszFunction) 
+{
+	// Retrieve the system error message fro the last-error code
+	LPVOID lpMsgBuf;
+	LPVOID lpDisplayBuf;
+	DWORD dwLastError = GetLastError();
+	
+	FormatMessage(
+		FORMAT_MESSAGE_ALLOCATE_BUFFER |
+		FORMAT_MESSAGE_FROM_SYSTEM |
+		FORMAT_MESSAGE_IGNORE_INSERTS,
+		NULL,
+		dwLastError,
+		MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
+		(LPTSTR)&lpMsgBuf,
+		0, 
+		NULL 
+	);
+	
+	// Display the error message and exit the process
+	lpDisplayBuf = (LPVOID)HeapAlloc(
+							GetProcessHeap(), // hHeap
+							HEAP_ZERO_MEMORY,  // dwFlags
+							(lstrlen((LPCTSTR)lpMsgBuf) + // nSize
+							lstrlen((LPCTSTR)lpszFunction) + 40) *
+							sizeof(TCHAR));
+	
+	if(lpDisplayBuf != NULL) 
+	{
+		StringCchPrintf(
+			(LPTSTR)lpDisplayBuf, // lpDest
+			LocalSize(lpDisplayBuf) / sizeof(TCHAR), // cChSize
+			TEXT("%s failed with error %d: %s"),
+			lpszFunction, dwLastError, lpMsgBuf);
+		
+		MessageBox(
+			NULL,
+			(LPCTSTR)lpDisplayBuf,
+			NULL,
+			MB_OK);
+			
+		HeapFree(
+			GetProcessHeap(),
+			0,
+			lpDisplayBuf
+		);
+	}
+	
+	HeapFree(
+			GetProcessHeap(),
+			0,
+			lpMsgBuf
+	);
+	
+	ExitProcess(dwLastError);
+}
