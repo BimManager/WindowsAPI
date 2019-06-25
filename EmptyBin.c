@@ -1,4 +1,10 @@
-void EmptyBin() 
+/*
+ *	EmptyBin.c
+ */
+
+#include "stdafx.h"
+
+VOID	EmptyBin()
 {
 	HRESULT hr;
 	
