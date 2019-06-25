@@ -20,6 +20,10 @@ return
 Send, ^{left}
 return
 
+^b::
+Send, {left}
+return
+
 ^e::
 Send, {end}
 return
@@ -38,6 +42,10 @@ return
 
 ^d::
 Send, {delete}
+return
+
+^h::
+Send, {backspace}
 return
 
 ^k::
