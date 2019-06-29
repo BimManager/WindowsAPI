@@ -9,7 +9,7 @@ if "%1"=="clean" goto _clean
 if "%1"=="fclean" goto _fclean
 
 :_compile
-cl /Zi %SRCS% %LIBS% /showIncludes /Fe:%NAME%
+cl /Zi /I..\ %SRCS% %LIBS% /showIncludes /Fe:%NAME%
 goto:eof
 
 :_clean
