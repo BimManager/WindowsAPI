@@ -1,6 +1,6 @@
 @echo off
 
-set SRCS=WinMain.c WndTmpl.c
+set SRCS=main.c WndTmpl.c
 set LIBS=kernel32.lib user32.lib gdi32.lib
 set NAME=a.exe
 
