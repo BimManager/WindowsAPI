@@ -2,8 +2,6 @@
  *  WndTmpl.h
  */
 
-#pragma once
-
 #ifndef WND_TMPL_H
 # define WND_TMPL_H
 
@@ -16,5 +14,15 @@ HWND FASTCALL       GenerateWindow(
 
 LRESULT CALLBACK    WndProc(HWND hwnd, UINT uMsg, 
                             WPARAM wParam, LPARAM lParam);
+
+int                 RegisterWindow(
+                        WNDCLASSEX *wc,
+                        HINSTANCE hInstance,
+                        TCHAR   pszClassName,
+                        LRESULT (*WndProc)(HWND, UINT, WPARAM, LPARAM));
+HWND FASTCALL       GenWindow(HINSTANCE hInstance, TCHAR pszClassName);
+
+LPTSTR              GenErrorMessage(DWORD dwErrId);
+
 
 #endif
