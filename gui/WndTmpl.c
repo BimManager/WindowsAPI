@@ -15,7 +15,7 @@ HWND FASTCALL   GenerateWindow(
 
     /* STEP 1: Register the Window Class */
     wc.cbSize       = sizeof(WNDCLASSEX);
-    wc.style        = 0;
+    wc.style        = CS_GLOBALCLASS;
     wc.lpfnWndProc  = WndProc;
     wc.cbClsExtra   = 0;
     wc.cbWndExtra   = 0;
@@ -29,8 +29,8 @@ HWND FASTCALL   GenerateWindow(
 
     if (!RegisterClassEx(&wc))
     {
-        MessageBox(NULL, _T("Window registration has failed."),
-                    _T("Error"), MB_ICONERROR | MB_OK);
+        MessageBox(NULL, GenErrorMessage(GetLastError()),
+                    _T("RegisterClassEx"), MB_ICONERROR | MB_OK);
         return (NULL);
     }
 
@@ -46,13 +46,13 @@ HWND FASTCALL   GenerateWindow(
     if (hwnd == NULL)
     {
         MessageBox(NULL, _T("Window creation has failed."),
-                    _T("Error"), MB_ICONERROR | MB_OK);
+                    _T("CreateWindowEx"), MB_ICONERROR | MB_OK);
         return (NULL);
     }
     return (hwnd);
 }
 
-LRESULT CALLBACK    WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+/* LRESULT CALLBACK    WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
     switch (uMsg)
     {
@@ -66,7 +66,7 @@ LRESULT CALLBACK    WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
             return (DefWindowProc(hwnd, uMsg, wParam, lParam));
     }
     return (0);
-}
+}*/
 
 int                 RegisterWindow(
                         WNDCLASSEX *pWc,

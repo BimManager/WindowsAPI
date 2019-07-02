@@ -14,14 +14,14 @@ int FASTCALL _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
     /* STEP 1: Register the Window Class */
     wc.cbSize       = sizeof(WNDCLASSEX);
-    wc.style        = CS_GLOBALCLASS;
+    wc.style        = 0;
     wc.lpfnWndProc  = WndProc;
     wc.cbClsExtra   = 0;
     wc.cbWndExtra   = 0;
     wc.hInstance    = hInstance;
     wc.hIcon        = NULL;
-    wc.hCursor      = NULL;
-    wc.hbrBackground    = (HBRUSH)(COLOR_MENU + 1);
+    wc.hCursor      = LoadCursor(NULL, IDC_ARROW);
+    wc.hbrBackground    = (HBRUSH)(COLOR_WINDOW + 1);
     wc.lpszMenuName     = NULL;
     wc.lpszClassName    = CLASS_NAME;
     wc.hIconSm          = NULL;
@@ -43,7 +43,7 @@ int FASTCALL _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
         NULL, NULL, hInstance, NULL);
     if (hwnd == NULL)
     {
-        MessageBox(NULL, _T("Window creation has failed."),
+        MessageBox(NULL, GenErrorMessage(GetLastError()),
                     _T("CreateWindowEx"), MB_ICONERROR | MB_OK);
         return (2);
     }

@@ -1,6 +1,6 @@
 @echo off
 
-set SRCS=main.c WndTmpl.c
+set SRCS=WndTmpl.c WinMainClassic.c WndProc.c
 set LIBS=kernel32.lib user32.lib gdi32.lib
 set NAME=a.exe
 
@@ -9,7 +9,8 @@ if "%1"=="clean" goto _clean
 if "%1"=="fclean" goto _fclean
 
 :_compile
-cl /Zi /I..\ %SRCS% %LIBS% /showIncludes /Fe:%NAME%
+cl /Zi /I..\ %SRCS% %LIBS% /Fe:%NAME%
+:: /showIncludes
 goto:eof
 
 :_clean

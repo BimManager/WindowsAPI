@@ -5,6 +5,7 @@
 #ifndef WND_TMPL_H
 # define WND_TMPL_H
 
+# define FASTCALL   __fastcall
 # define CLASS_NAME _T("WindowTemplate")
 
 HWND FASTCALL       GenerateWindow(
@@ -23,6 +24,5 @@ int                 RegisterWindow(
 HWND FASTCALL       GenWindow(HINSTANCE hInstance, TCHAR pszClassName);
 
 LPTSTR              GenErrorMessage(DWORD dwErrId);
-
 
 #endif
