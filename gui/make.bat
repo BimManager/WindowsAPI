@@ -1,6 +1,6 @@
 @echo off
 
-set SRCS=WndTmpl.c WinMainClassic.c WndProc.c
+set SRCS=WndTmpl.c WinMainClassic.c WndProc.c resource.res
 set LIBS=kernel32.lib user32.lib gdi32.lib
 set NAME=a.exe
 

@@ -4,6 +4,7 @@
 
 #include "stdafx.h"
 #include "WndTmpl.h"
+#include "resource.h"
 
 int FASTCALL _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, 
                 LPTSTR pszCmdLine, int iShowCmd)
@@ -19,10 +20,10 @@ int FASTCALL _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
     wc.cbClsExtra   = 0;
     wc.cbWndExtra   = 0;
     wc.hInstance    = hInstance;
-    wc.hIcon        = NULL;
+    wc.hIcon        = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_MYICON));
     wc.hCursor      = LoadCursor(NULL, IDC_ARROW);
     wc.hbrBackground    = (HBRUSH)(COLOR_WINDOW + 1);
-    wc.lpszMenuName     = NULL;
+    wc.lpszMenuName     = MAKEINTRESOURCE(IDR_MYMENU);
     wc.lpszClassName    = CLASS_NAME;
     wc.hIconSm          = NULL;
     if (!RegisterClassEx(&wc))
