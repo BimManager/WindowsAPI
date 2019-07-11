@@ -4,6 +4,7 @@
 
 #include "stdafx.h"
 #include "WndTmpl.h"
+#include "resource.h"
 
 void    CreateSomeFile(void);
 void    discurdir(void);
@@ -30,6 +31,19 @@ LRESULT CALLBACK    WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
                     break ;
             }
             break;
+        case WM_COMMAND:
+            switch (LOWORD(wParam))
+            {
+                case ID_FILE_EXIT:
+                    MessageBox(hwnd, _T("What is up?"), _T("Exit?"), MB_OK);
+                    //DestroyWindow(hwnd);
+                    PostMessage(hwnd, WM_CLOSE, 0, 0);
+                    break ;
+                case ID_FILE_ABOUT:
+                    MessageBox(hwnd, _T("What is up?"), _T("Exit?"), MB_OK);
+                    break ;
+            }
+            break ;
         default:
             return (DefWindowProc(hwnd, uMsg, wParam, lParam));
     }
