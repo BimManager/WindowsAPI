@@ -15,14 +15,22 @@ void    LaunchNotepad(void);
 LRESULT CALLBACK    WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
     static TCHAR buffer[BUFF_SIZE];
+    static HWND hTool;
+
     switch (uMsg)
     {
+        case WM_CREATE:
+            hTool = CreateDialog(GetModuleHandle(NULL),
+                MAKEINTRESOURCE(IDD_TOOLBAR), hwnd, ToolDlgProc);
+            if (hTool)
+                ShowWindow(hTool, SW_SHOW);
+            break ;
         case WM_CLOSE:
             DestroyWindow(hwnd);
             break ;
         case WM_DESTROY:
             PostQuitMessage(0);
-            break;
+            break ;
         case WM_KEYDOWN:
             switch (wParam)
             {
@@ -38,12 +46,22 @@ LRESULT CALLBACK    WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
             switch (LOWORD(wParam))
             {
                 case ID_FILE_EXIT:
-                    if (MessageBox(hwnd, _T("Are you certain that you wish to git rid of this window?"),
+                    if (MessageBox(hwnd, _T("Kill this window?"),
                         _T("Exit?"), MB_OKCANCEL) == IDOK)
                         PostMessage(hwnd, WM_CLOSE, 0, 0);
                     break ;
                 case ID_FILE_ABOUT:
-                    MessageBox(hwnd, _T("What is up?"), _T("Exit?"), MB_OK);
+                    int ret = DialogBox(GetModuleHandle(NULL), 
+                        MAKEINTRESOURCE(IDD_ABOUT), hwnd, AboutDlgProc);
+                    if (ret == IDOK)
+                        MessageBox(hwnd, _T("Dialog exited with IDOK"), _T("Gen"), 
+                            MB_OK | MB_ICONINFORMATION);
+                    else if (ret == IDCANCEL)
+                        MessageBox(hwnd, _T("Dialog exited with IDCANCEL"), _T("Gen"), 
+                            MB_OK | MB_ICONINFORMATION);
+                    else if (ret == -1)
+                        MessageBox(hwnd, GenErrorMessage(GetLastError()), _T("Error"), 
+                            MB_OK | MB_ICONINFORMATION);
                     break ;
                 default:
                     wcscpy(buffer, _T("LOWORD(wParam) = "));

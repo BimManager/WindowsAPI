@@ -6,8 +6,8 @@ CFLAGS=/Zi /c /I..
 LDFLAGS=kernel32.lib user32.lib gdi32.lib
 
 HDRS=WndTmpl.h WndTmpl.h stdafx.h resource.h 
-SRCS=WinMainClassic.c WndTmpl.c WndProc.c AboutDlgProc.c
-OBJS=WinMainClassic.obj WndTmpl.obj WndProc.obj AboutDlgProc.obj
+SRCS=WinMainClassic.c WndTmpl.c WndProc.c AboutDlgProc.c ToolDlgProc.c
+OBJS=WinMainClassic.obj WndTmpl.obj WndProc.obj AboutDlgProc.obj ToolDlgProc.obj
 RES=resource.rc
 CRES=resource.res
 NAME=a.exe

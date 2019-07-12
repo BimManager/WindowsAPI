@@ -6,6 +6,7 @@
 # define RESOURCE_H
 
 # define IDD_ABOUT      101
+# define IDD_TOOLBAR    102
 
 # define IDI_MYICON     10001
 
@@ -13,7 +14,9 @@
 
 # define ID_FILE_EXIT   9001
 # define ID_FILE_ABOUT  9002
-# define ID_FOO         9003
-# define ID_BAR         9004
+# define ID_DLG_SHOW    9003
+# define ID_DLG_HIDE    9004
+# define IDC_PRESS      9005
+# define IDC_OTHER      9006
 
 #endif
