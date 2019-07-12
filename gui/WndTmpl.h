@@ -15,8 +15,10 @@ HWND FASTCALL       GenerateWindow(
 
 LRESULT CALLBACK    WndProc(HWND hwnd, UINT uMsg, 
                         WPARAM wParam, LPARAM lParam);
-BOOL CALLBACK       AboutDlgProc(HWND hwnd, UINT uMsg,
+INT_PTR CALLBACK       AboutDlgProc(HWND hwnd, UINT uMsg,
                         WPARAM wParam, LPARAM lParam);
+INT_PTR CALLBACK       ToolDlgProc(HWND hwnd, UINT uMsg,
+                        WPARAM wParam, LPARAM lParam);                        
 
 int                 RegisterWindow(
                         WNDCLASSEX *wc,
