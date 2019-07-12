@@ -2,7 +2,7 @@
  *  resource.rc
  */
 
- #include <windows.h>
+ //#include <windows.h>
  #include <winres.h>
  #include "resource.h"
 
@@ -13,8 +13,13 @@
  BEGIN
     POPUP "&File"
     BEGIN
-        MENUITEM "E&xit", ID_FILE_EXIT
-        MENUITEM "A&bout", ID_FILE_ABOUT
+        MENUITEM "E&xit",ID_FILE_EXIT
+        MENUITEM "A&bout",ID_FILE_ABOUT
+    END
+    POPUP "&Info"
+    BEGIN
+        MENUITEM "F&oo",ID_FOO
+        MENUITEM "B&ar",ID_BAR
     END
 END
 

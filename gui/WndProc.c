@@ -6,12 +6,15 @@
 #include "WndTmpl.h"
 #include "resource.h"
 
+#define BUFF_SIZE 4096
+
 void    CreateSomeFile(void);
 void    discurdir(void);
 void    LaunchNotepad(void);
 
 LRESULT CALLBACK    WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
+    static TCHAR buffer[BUFF_SIZE];
     switch (uMsg)
     {
         case WM_CLOSE:
@@ -35,12 +38,17 @@ LRESULT CALLBACK    WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
             switch (LOWORD(wParam))
             {
                 case ID_FILE_EXIT:
-                    MessageBox(hwnd, _T("What is up?"), _T("Exit?"), MB_OK);
-                    //DestroyWindow(hwnd);
-                    PostMessage(hwnd, WM_CLOSE, 0, 0);
+                    if (MessageBox(hwnd, _T("Are you certain that you wish to git rid of this window?"),
+                        _T("Exit?"), MB_OKCANCEL) == IDOK)
+                        PostMessage(hwnd, WM_CLOSE, 0, 0);
                     break ;
                 case ID_FILE_ABOUT:
                     MessageBox(hwnd, _T("What is up?"), _T("Exit?"), MB_OK);
+                    break ;
+                default:
+                    wcscpy(buffer, _T("LOWORD(wParam) = "));
+                    _itow(LOWORD(wParam), buffer + wcslen(buffer), 10);
+                    MessageBox(hwnd, buffer, _T("Default"), MB_OK);
                     break ;
             }
             break ;
