@@ -52,6 +52,10 @@ return
 Send, ^{end}
 return
 
+^f::
+Send, {right}
+return
+
 !f::
 Send, ^{right}
 return
