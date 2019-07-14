@@ -14,13 +14,18 @@ HWND FASTCALL       GenerateWindow(
                         TCHAR   pszClassName);
 
 LRESULT CALLBACK    WndProc(HWND hwnd, UINT uMsg, 
-                            WPARAM wParam, LPARAM lParam);
+                        WPARAM wParam, LPARAM lParam);
+INT_PTR CALLBACK       AboutDlgProc(HWND hwnd, UINT uMsg,
+                        WPARAM wParam, LPARAM lParam);
+INT_PTR CALLBACK       ToolDlgProc(HWND hwnd, UINT uMsg,
+                        WPARAM wParam, LPARAM lParam);                        
 
 int                 RegisterWindow(
                         WNDCLASSEX *wc,
                         HINSTANCE hInstance,
                         TCHAR   pszClassName,
                         LRESULT (*WndProc)(HWND, UINT, WPARAM, LPARAM));
+
 HWND FASTCALL       GenWindow(HINSTANCE hInstance, TCHAR pszClassName);
 
 LPTSTR              GenErrorMessage(DWORD dwErrId);

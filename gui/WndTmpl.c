@@ -52,22 +52,6 @@ HWND FASTCALL   GenerateWindow(
     return (hwnd);
 }
 
-/* LRESULT CALLBACK    WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
-{
-    switch (uMsg)
-    {
-        case WM_CLOSE:
-            DestroyWindow(hwnd);
-            break ;
-        case WM_DESTROY:
-            PostQuitMessage(0);
-            break;
-        default :
-            return (DefWindowProc(hwnd, uMsg, wParam, lParam));
-    }
-    return (0);
-}*/
-
 int                 RegisterWindow(
                         WNDCLASSEX *pWc,
                         HINSTANCE hInstance,
