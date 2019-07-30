@@ -3,6 +3,7 @@
 ; ^ Control
 ; + Shift
 ; & to combine two keys
+; ~ to preserve the origin shortcut
 
 ^m::
 Send, {enter}
@@ -60,9 +61,9 @@ return
 Send, ^{right}
 return
 
-^L::
+~^L::
 Send, cls ^m
 return 
 
-::kk::Kirill Kozlov
+::kk::kkozlov
 

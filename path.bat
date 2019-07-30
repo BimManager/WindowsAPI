@@ -1,3 +1,5 @@
+@echo off
+
 set Path=^
 %WINDIR%\system32;^
 %WINDIR%;^
@@ -15,4 +17,11 @@ X:\kkozlov\7-Zip;^
 %PROGRAMFILES%\Autodesk\Navisworks Manage 2019;^
 %PROGRAMFILES(x86)%\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.6.1 Tools;^
 %PROGRAMFILES(x86)%\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VisualStudio\NodeJs\win-x64;^
-%PROGRAMFILES(x86)%\Google\Chrome\Application
+%PROGRAMFILES(x86)%\Google\Chrome\Application;^
+%USERPROFILE%\AppData\Local\Programs\Python\Python37;^
+%USERPROFILE%\AppData\Local\Programs\Python\Python37\Scripts
+
+doskey ls=dir/b $1
+doskey cat=type $1
+doskey gs=git status
+doskey gc= git commit -m $1
