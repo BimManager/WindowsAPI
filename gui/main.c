@@ -18,10 +18,10 @@ int main(void)
         GenErrorMessage(GetLastError());
         return (1);
     }
-    if (RegisterWindow(&wc, hInstance, CLASS_NAME, &WndProc) == -1)
-        return (1);
-    //hwnd = GenerateWindow(NULL, &WndProc, CLASS_NAME);
-    hwnd = GenWindow(hInstance, CLASS_NAME);
+    //if (RegisterWindow(&wc, hInstance, CLASS_NAME, &WndProc) == -1)
+      //  return (1);
+    hwnd = GenerateWindow(hInstance, &WndProc, CLASS_NAME);
+    //hwnd = GenWindow(hInstance, CLASS_NAME);
     if (hwnd == NULL)
         return (2);
     ShowWindow(hwnd, 1);
