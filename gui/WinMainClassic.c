@@ -6,8 +6,11 @@
 #include "WndTmpl.h"
 #include "resource.h"
 
-int FASTCALL _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, 
+
+ int FASTCALL _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, 
                 LPTSTR pszCmdLine, int iShowCmd)
+/*__declspec(dllexport)
+BOOL WINAPI DllMain(HINSTANCE hInstance, DWORD dwReason, LPVOID lpvReserved)*/
 {
     WNDCLASSEX  wc;
     HWND        hwnd;
@@ -48,7 +51,8 @@ int FASTCALL _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
                     _T("CreateWindowEx"), MB_ICONERROR | MB_OK);
         return (2);
     }
-    ShowWindow(hwnd, iShowCmd);
+    // iShowCmd
+    ShowWindow(hwnd, 1);
     UpdateWindow(hwnd);
 
     /* STEP 3: The message loop */

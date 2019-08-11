@@ -2,7 +2,7 @@ CC=cl.exe
 LD=link.exe
 RC=rc.exe
 
-CFLAGS=/Zi /c /I..
+CFLAGS= /TC /nologo /Zi /c /I.. 
 LDFLAGS=kernel32.lib user32.lib gdi32.lib
 
 HDRS=WndTmpl.h WndTmpl.h stdafx.h resource.h 
@@ -13,6 +13,10 @@ CRES=resource.res
 NAME=a.exe
 
 all : $(NAME)
+
+dll : $(OBJS)
+	$(LD) /NOLOGO /DLL $** \
+	kernel32.lib user32.lib gdi32.lib libucrt.lib /OUT:a.dll 
 
 $(NAME) : $(OBJS) $(CRES)
 	$(LD) $(LDFLAGS) $(OBJS) $(CRES) /OUT:$(NAME)
@@ -26,10 +30,10 @@ $(CRES)	: $(RES)
 .PHONY : all clean fclean re	
 
 clean :
-	del *.obj *.pdb	
+	@del *.obj *.pdb	
 
 fclean : clean
-	del $(NAME)
+	@del $(NAME)
 
 re : fclean all	
 
