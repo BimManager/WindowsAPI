@@ -1,0 +1,2 @@
+SetDllDirectory() function
+set PATH=%PATH%;C:\PathToDll
