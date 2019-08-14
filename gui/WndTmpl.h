@@ -8,6 +8,12 @@
 # define FASTCALL   __fastcall
 # define CLASS_NAME _T("WindowTemplate")
 
+__declspec(dllexport) int FASTCALL _tMinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, 
+                LPTSTR pszCmdLine, int iShowCmd);
+
+/* __declspec(dllexport) 
+BOOL WINAPI DllMain(HINSTANCE hinstDll, DWORD dwReason, LPVOID lpvReserved);*/
+
 HWND FASTCALL       GenerateWindow(
                         HINSTANCE hInstance,
                         LRESULT (*WndProc)(HWND, UINT, WPARAM, LPARAM),
