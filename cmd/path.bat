@@ -9,7 +9,6 @@ set Path=^
 %USERPROFILE%\AppData\Local\Microsoft\WindowsApps;^
 %USERPROFILE%\AppData\Local\Programs\Microsoft VS Code\bin;^
 %PROGRAMFILES%\Autodesk\Revit 2019;^
-X:\kkozlov\7-Zip;^
 %PROGRAMFILES(x86)%\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.7.2 Tools\x64;^
 %PROGRAMFILES%\Microsoft Office\root\Office16;^
 %PROGRAMFILES(x86)%\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer\Git\cmd;^
@@ -21,17 +20,3 @@ X:\kkozlov\7-Zip;^
 %PROGRAMFILES(x86)%\Google\Chrome\Application;^
 %USERPROFILE%\AppData\Local\Programs\Python\Python37;^
 %USERPROFILE%\AppData\Local\Programs\Python\Python37\Scripts
-
-:: bash equivalents
-doskey ls=dir/b $1
-doskey pwd=echo %cd%
-doskey cat=type $*
-doskey rm=del/q $*
-doskey make=nmake $1
-
-:: git alaises
-doskey gs=git status
-doskey gc=git commit -m $1
-doskey gp=git push
-doskey ga=git add $*
-doskey gcl=git clone
