@@ -5,6 +5,8 @@
 ; & to combine two keys
 ; ~ to preserve the origin shortcut
 
+if WinActive("dev") 
+
 ^m::
 Send, {enter}
 return
@@ -64,6 +66,11 @@ return
 ~^L::
 Send, cls ^m
 return 
+
+!d::
+Send, ^{right}
+Send, ^{backspace}
+return
 
 ::kk::kkozlov
 
