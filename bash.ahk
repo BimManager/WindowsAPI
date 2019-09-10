@@ -5,14 +5,15 @@
 ; & to combine two keys
 ; ~ to preserve the origin shortcut
 
-if WinActive("dev") 
-
 ^m::
 Send, {enter}
 return
 
-^w::
-Send, ^{backspace}
+$^w::
+if WinActive("ahk_exe kali.exe")
+    Send ^w
+else
+    Send ^{backspace}
 return
 
 ^a::
@@ -63,8 +64,11 @@ return
 Send, ^{right}
 return
 
-~^L::
-Send, cls ^m
+$~^L::
+if WinActive("ahk_exe kali.exe")
+    Send ^l
+else 
+    Send, cls ^m
 return 
 
 !d::
@@ -73,4 +77,3 @@ Send, ^{backspace}
 return
 
 ::kk::kkozlov
-

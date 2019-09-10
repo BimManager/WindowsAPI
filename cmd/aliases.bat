@@ -1,13 +1,15 @@
 @echo off
 
 :: bash equivalents
-doskey ls=dir/b $1
+doskey ls=dir $*
 doskey pwd=echo %cd%
-doskey cat=type $*
-doskey rm=del/q $*
-doskey make=nmake $1
+doskey cat=type n$*
+doskey rm=del $*
+doskey mv=move $*
+doskey cp=copy $*
+doskey make=nmake /nologo $*
 
-:: git alaises
+:: git aliases
 doskey gs=git status
 doskey gc=git commit -m $1
 doskey gp=git push
