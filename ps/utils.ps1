@@ -13,6 +13,14 @@ $global:ifc = [AppDomain]::CurrentDomain.GetAssemblies() | where {$_.FullName -l
 $global:forms = [AppDomain]::CurrentDomain.GetAssemblies() | where {$_.FullName -like "*Forms*"} | select -First 1
 
 $global:res = $null
+
+function GetTypeByName
+{
+    param ($asmb)
+    param ($typeName)
+    $asmbl.GetTypes()|where{$_.name -like $typeName}
+}
+
 function Add($a, $b)
 {
     $a + $b

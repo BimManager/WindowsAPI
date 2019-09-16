@@ -48,12 +48,19 @@ return
 Send, {delete}
 return
 
-^h::
-Send, {backspace}
+
+$^h::
+if WinActive("ahk_exe kali.exe")
+    Send, ^h
+else
+    Send, {backspace}
 return
 
-^k::
-Send, ^{end}
+$^k::
+if WinActive("ahk_exe kali.exe")
+    Send, ^k
+else
+    Send, ^{end}
 return
 
 ^f::
@@ -71,9 +78,14 @@ else
     Send, cls ^m
 return 
 
-!d::
-Send, ^{right}
-Send, ^{backspace}
+$!d::
+if WinActive("ahk_exe kali.exe")
+    Send, !d
+else 
+{
+    Send, ^{right}
+    Send, ^{backspace}
+}
 return
 
 ::kk::kkozlov
